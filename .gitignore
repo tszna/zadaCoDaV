@@ -1,6 +1,7 @@
 /frontend/node_modules/
 
-/backend/var/
+/var/*
+!/var/data.db
 /backend/vendor/
 
 /backend/.env.local

@@ -1,0 +1,20 @@
+<h2 mat-dialog-title>Edytuj datę wyjazdu</h2>
+<form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+  <mat-dialog-content>
+    <div style="display: flex; justify-content: center;">
+      <mat-form-field appearance="fill">
+        <mat-label>Data wyjazdu</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="departure_date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="editForm.get('departure_date')?.hasError('required')">
+          Data wyjazdu jest wymagana.
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button type="button" (click)="onNoClick()">Anuluj</button>
+    <button mat-raised-button color="primary" type="submit">Zapisz</button>
+  </mat-dialog-actions>
+</form>

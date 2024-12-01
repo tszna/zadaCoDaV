@@ -1,0 +1,61 @@
+<button mat-raised-button color="primary" (click)="toggleForm()" class="toggle-form-button">
+  {{ showForm ? 'Ukryj formularz' : 'Dodaj wyjazd' }}
+</button>
+
+<div *ngIf="showForm" class="form-container" @formAnimation>
+  <form [formGroup]="addTripForm" (ngSubmit)="onSubmit()" class="add-trip-form">
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Nazwa uniwersytetu</mat-label>
+      <input matInput formControlName="destination_name">
+      <mat-error *ngIf="addTripForm.get('destination_name')?.hasError('required')">
+        Nazwa uniwersytetu jest wymagana.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Data wyjazdu</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="departure_date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="addTripForm.get('departure_date')?.hasError('required')">
+        Data wyjazdu jest wymagana.
+      </mat-error>
+    </mat-form-field>
+
+    <div class="form-actions">
+      <button mat-raised-button color="primary" type="submit">Dodaj</button>
+      <button mat-button type="button" (click)="toggleForm()">Anuluj</button>
+    </div>
+  </form>
+</div>
+
+<div *ngIf="isLoading" class="loading-container">Ładowanie danych...</div>
+
+<div *ngIf="!isLoading" class="table-container">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="destination_name">
+      <th mat-header-cell *matHeaderCellDef><b>Nazwa uczelni</b></th>
+      <td mat-cell *matCellDef="let element">{{ element.destination_name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="departure_date">
+      <th mat-header-cell *matHeaderCellDef><b>Data wyjazdu</b></th>
+      <td mat-cell *matCellDef="let element">{{ element.departure_date | date: 'yyyy-MM-dd' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef><b>Akcje</b></th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button color="accent" (click)="openEditDialog(element)">Edytuj</button>
+        <button mat-button color="warn" (click)="deleteErasmusIn(element.id)">Usuń</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <div *ngIf="dataSource.length === 0" class="no-data">
+    Brak danych do wyświetlenia.
+  </div>
+</div>

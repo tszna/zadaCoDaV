@@ -1,0 +1,45 @@
+<div class="login-container">
+  <mat-card class="login-card">
+    <h2 class="mat-title text-center">Logowanie</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Nazwa użytkownika</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="username"
+          placeholder="Wprowadź nazwę użytkownika"
+        />
+        <mat-error *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
+          Proszę wprowadzić nazwę użytkownika.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Hasło</mat-label>
+        <input
+          matInput
+          type="password"
+          formControlName="password"
+          placeholder="Wprowadź hasło"
+        />
+        <mat-error *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+          Proszę wprowadzić hasło.
+        </mat-error>
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        class="full-width"
+        [disabled]="loginForm.invalid || isLoading"
+      >
+        Zaloguj się
+      </button>
+    </form>
+    <div *ngIf="loginError" class="error-message">
+      {{ loginError }}
+    </div>
+  </mat-card>
+</div>

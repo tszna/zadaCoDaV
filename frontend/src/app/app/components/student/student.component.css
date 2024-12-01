@@ -1,0 +1,41 @@
+.toggle-form-button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.form-container {
+  margin-bottom: 20px;
+}
+
+.add-trip-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+}
+
+.form-field {
+  margin-bottom: 16px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 16px;
+}
+
+.loading-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+}
+
+.no-data {
+  text-align: center;
+  margin-top: 20px;
+}

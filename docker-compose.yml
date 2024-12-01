@@ -1,0 +1,43 @@
+services:
+  ng-apache:
+    image: httpd:2.4.20
+    container_name: ng-apache
+    tty: true
+    ports:
+      - "8000:80"
+    volumes:
+      - ./backend:/var/www/html
+      - ./httpd.conf:/usr/local/apache2/conf/httpd.conf
+    networks:
+      - ng-network
+
+  ng-php:
+    build:
+      dockerfile: Dockerfile
+      context: ./backend
+    container_name: ng-php
+    volumes:
+      - ./backend:/var/www/html
+      - vendor-volume:/var/www/html/vendor
+    networks:
+      - ng-network
+
+  ng-node:
+    build: ./frontend
+    container_name: ng-node
+    volumes:
+      - ./frontend:/usr/src/app
+      - node_modules-volume:/usr/src/app/node_modules
+    ports:
+      - '4200:4200'
+    command: bash -c "npm install && ng serve --host 0.0.0.0"
+    networks:
+      - ng-network
+
+networks:
+  ng-network:
+    driver: "bridge"
+
+volumes:
+  vendor-volume:
+  node_modules-volume:
