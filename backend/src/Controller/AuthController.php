@@ -10,6 +10,13 @@ use Symfony\Component\HttpFoundation\Response;
 class AuthController extends AbstractController
 {
 
+    /**
+     * Endpoint sprawdzający status uwierzytelnienia użytkownika.
+     *
+     * @param Security $security
+     *
+     * @return JsonResponse 
+     */
     public function authStatus(Security $security): JsonResponse
     {
         $user = $security->getUser();
@@ -25,6 +32,11 @@ class AuthController extends AbstractController
         }
     }
 
+    /**
+     * Endpoint obsługujący wylogowanie użytkownika.
+     *
+     * @return JsonResponse 
+     */
     public function logout(): JsonResponse
     {
         $response = new JsonResponse(['message' => 'Zostałeś wylogowany.'], Response::HTTP_OK);
