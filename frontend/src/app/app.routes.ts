@@ -9,13 +9,13 @@ export const routes: Routes = [
     path: 'student',
     component: StudentComponent,
     canActivate: [AuthGuard],
-    data: { roles: ['ROLE_TEACHER', 'ROLE_STUDENT'] },
+    data: { roles: ['ROLE_TEACHER', 'ROLE_STUDENT', 'ROLE_ADMIN'] },
   },
   {
     path: 'teacher',
     component: TeacherComponent,
     canActivate: [AuthGuard],
-    data: { roles: ['ROLE_TEACHER'] },
+    data: { roles: ['ROLE_TEACHER', 'ROLE_ADMIN'] },
   },
   { path: 'not-authorized', component: NotAuthorizedComponent }
 ];

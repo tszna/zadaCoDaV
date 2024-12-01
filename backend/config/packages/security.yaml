@@ -38,10 +38,10 @@ security:
         - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/auth-status, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/api/users/add, roles: ROLE_ADMIN }
-        - { path: ^/api/erasmus-in/add, roles: [ROLE_STUDENT, ROLE_TEACHER] }
-        - { path: ^/api/erasmus-in/update, roles: [ROLE_STUDENT, ROLE_TEACHER] }
-        - { path: ^/api/erasmus-in/delete, roles: [ROLE_STUDENT, ROLE_TEACHER] }
-        - { path: ^/api/erasmus-in/list, roles: [ROLE_STUDENT, ROLE_TEACHER] }
+        - { path: ^/api/erasmus-in/add, roles: [ROLE_STUDENT, ROLE_TEACHER, ROLE_ADMIN] }
+        - { path: ^/api/erasmus-in/update, roles: [ROLE_STUDENT, ROLE_TEACHER, ROLE_ADMIN] }
+        - { path: ^/api/erasmus-in/delete, roles: [ROLE_STUDENT, ROLE_TEACHER, ROLE_ADMIN] }
+        - { path: ^/api/erasmus-in/list, roles: [ROLE_STUDENT, ROLE_TEACHER, ROLE_ADMIN] }
         - { path: ^/api/logout, roles: IS_AUTHENTICATED_FULLY }
 
 when@test:
