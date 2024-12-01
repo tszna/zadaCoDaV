@@ -1,16 +1,14 @@
 /frontend/node_modules/
-
-/var/*
-!/var/data.db
-/backend/vendor/
-
-/backend/.env.local
-/backend/.env.*.local
-
 /frontend/.angular/
 /frontend/dist/
-frontend/tmp/
-frontend/cache/
+/frontend/tmp/
+/frontend/cache/
+
+/backend/var/*
+!/backend/var/data.db
+/backend/vendor/
+/backend/.env.local
+/backend/.env.*.local
 
 *.log
 .DS_Store
