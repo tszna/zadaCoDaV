@@ -1,3 +1,7 @@
+Dodałem piwik-pro do swojego aktualnego projektu. Strona logowania, wraz z zgodą na przetrwarzanie danych prezentuje się tak jak na screenie.
+
+<img src="https://i.imgur.com/TMcicPU.png">
+
 Projekt uruchomiony przy pomocy dockera jak i lokalnie działa dokładnie w ten sam sposób:
 <p><b>API:</b> http://localhost:8000</p>
 <p><b>UI:</b> http://localhost:4200</p>
