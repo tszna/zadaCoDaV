@@ -16,7 +16,7 @@ import { Subscription } from 'rxjs';
     NavigationComponent
   ],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'], // Poprawiono 'styleUrl' na 'styleUrls'
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnDestroy {
   isAuthenticated = false;
