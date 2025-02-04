@@ -6,9 +6,12 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app/app.routes';
 import { credentialsInterceptor } from './app/app/utils/credentials.interceptor';
 import { MatNativeDateModule } from '@angular/material/core';
-import { importProvidersFrom } from '@angular/core';
+import { importProvidersFrom, LOCALE_ID } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localePl from '@angular/common/locales/pl';
 import { NgxPiwikProModule } from '@piwikpro/ngx-piwik-pro';
 
+registerLocaleData(localePl);
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -18,5 +21,6 @@ bootstrapApplication(AppComponent, {
     ),
     provideAnimations(),
     provideRouter(routes),
+    { provide: LOCALE_ID, useValue: 'pl' },
   ],
 });
